@@ -1,36 +1,5 @@
-class Grass {
-    constructor(x, y) {
-        this.multiply = round(random(0, 8));
-        this.x = x;
-        this.y = y;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
+class Grass extends LivingCreature{
 
-    }
-
-
-
-    yntrelVandak() {
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == 0) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
-    }
     bazmanal() {
         this.multiply++;
         var norVandak = random(this.yntrelVandak(0));
@@ -46,38 +15,18 @@ class Grass {
 
 
 }
-class Xotaker {
+class Xotaker extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
         this.energy = 3;
-        this.multiply = round(random(0, 8));
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
 
     }
+
     yntrelVandak(ch) {
         this.stanalNorKordinatner();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == ch) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
-    }
+        return super.yntrelVandak(ch);
+     }
+     
     stanalNorKordinatner() {
         this.directions = [
             [this.x - 1, this.y - 1],
